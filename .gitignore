@@ -1,0 +1,10 @@
+node_modules
+error.log
+info.log
+.env
+.vscode
+yarn.lock
+
+uploads/
+
+
