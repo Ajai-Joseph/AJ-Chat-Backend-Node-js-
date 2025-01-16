@@ -5,6 +5,8 @@ const http = require("http");
 const socketIO = require("socket.io");
 const userRoutes = require("./routes/userRoutes");
 const messageRoutes = require("./routes/messageRoutes");
+const callRoutes = require("./routes/callRoutes");
+
 const path = require("path");
 
 const db = require("./database/models");
@@ -30,9 +32,9 @@ app.use(express.json());
 // Routes
 app.use("/api/auth", userRoutes);
 app.use("/api/messages", messageRoutes);
+app.use("/api/calls", callRoutes);
 
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
-
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 global.io.on("connection", (socket) => {
   console.log(`User connected: ${socket.id}`);
