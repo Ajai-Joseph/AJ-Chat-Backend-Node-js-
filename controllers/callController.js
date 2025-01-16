@@ -2,7 +2,7 @@ const { AccessToken } = require("livekit-server-sdk");
 const getToken = async (req, res) => {
   try {
     const participantName = req.query.name;
-    const roomName = "AJ-Chat-Room";
+    const roomName = req.query.room;    
     // Identifier to be used for participant.
     // It's available as LocalParticipant.identity with livekit-client SDK
     const at = new AccessToken(
