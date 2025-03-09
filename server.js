@@ -6,6 +6,7 @@ const socketIO = require("socket.io");
 const userRoutes = require("./routes/userRoutes");
 const messageRoutes = require("./routes/messageRoutes");
 const callRoutes = require("./routes/callRoutes");
+const pushNotificationRoutes = require("./routes/pushNotificationRoutes");
 
 const path = require("path");
 
@@ -33,6 +34,7 @@ app.use(express.json());
 app.use("/api/auth", userRoutes);
 app.use("/api/messages", messageRoutes);
 app.use("/api/calls", callRoutes);
+app.use("/api/notifications", pushNotificationRoutes);
 
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 

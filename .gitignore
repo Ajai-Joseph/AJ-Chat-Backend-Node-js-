@@ -6,5 +6,6 @@ info.log
 yarn.lock
 
 uploads/
+config/firebase-service-account.json
 
 
