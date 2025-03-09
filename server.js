@@ -36,6 +36,10 @@ app.use("/api/calls", callRoutes);
 
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
+app.use("/api/cicd", (req, res) => {
+  return res.status(200).json({ message: "CI/CD pipeline is working" });
+});
+
 global.io.on("connection", (socket) => {
   console.log(`User connected: ${socket.id}`);
 
