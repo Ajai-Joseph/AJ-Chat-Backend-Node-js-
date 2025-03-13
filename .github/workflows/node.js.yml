@@ -34,7 +34,7 @@ jobs:
         npm ci --production
 
     - name: Restart Application with PM2
-    - run: |
+      run: |
         pm2 stop AJ-Chat || true
         pm2 start ~/AJ-Chat-Backend-Node-js-/server.js --name AJ-Chat
         pm2 save
