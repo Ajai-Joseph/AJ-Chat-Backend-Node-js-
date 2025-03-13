@@ -24,6 +24,18 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: npm ci
+
+    - name: Copy Code to Deployment Directory
+      run: |
+        sudo rsync -av --delete $GITHUB_WORKSPACE/ ~/AJ-Chat-Backend-Node-js-/
+
     - run: |
-          pm2 restart server || pm2 start server.js --name server
+        cd ~/AJ-Chat-Backend-Node-js-
+        npm ci --production
+
+    - name: Restart Application with PM2
+    - run: |
+        pm2 stop AJ-Chat || true
+        pm2 start ~/AJ-Chat-Backend-Node-js-/server.js --name AJ-Chat
+        pm2 save
+        pm2 restart AJ-Chat
